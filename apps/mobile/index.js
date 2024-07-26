@@ -1,8 +1,15 @@
-import { registerRootComponent } from 'expo';
+const { getDefaultConfig } = require('expo/metro-config');
+const path = require('path');
 
-import App from './src/App';
+const projectRoot = __dirname;
+const monorepoRoot = path.resolve(projectRoot, '../..');
+const config = getDefaultConfig(projectRoot);
 
-// registerRootComponent calls AppRegistry.registerComponent('main', () => App);
-// It also ensures that whether you load the app in Expo Go or in a native build,
-// the environment is set up appropriately
-registerRootComponent(App);
+config.watchFolders = [monorepoRoot];
+config.resolver.nodeModulesPaths = [
+  path.resolve(projectRoot, 'node_modules'),
+  path.resolve(monorepoRoot, 'node_modules'),
+];
+
+config.resolver.disableHierarchicalLookup = true;
+module.exports = config;
