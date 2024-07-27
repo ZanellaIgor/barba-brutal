@@ -1,9 +1,9 @@
+import { profissionais, servicos } from '@barba/core';
 import { PrismaClient } from '@prisma/client';
 import {
   Profissional as PrismaProfissional,
   Servico as PrismaServico,
 } from 'prisma/prisma-client';
-import { servicos, profissionais } from '@barba/core';
 
 const prisma = new PrismaClient();
 
