@@ -8,6 +8,7 @@ import {
 const prisma = new PrismaClient();
 
 async function seed() {
+  console.log(profissionais);
   await prisma.profissional.createMany({
     data: profissionais as PrismaProfissional[],
   });
